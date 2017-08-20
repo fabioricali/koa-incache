@@ -45,7 +45,9 @@ const Router = require('koa-router');
 const app = new koa();
 const router = new Router();
 
-app.use(cache());
+app.use(cache({
+    life: 60 // 1 minute max age
+}));
 
 router.get('/this/is/cached', function (ctx, next) {
     const content = fs.readFileSync('myFile');
