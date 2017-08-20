@@ -1,1 +1,1 @@
-{"/":{"isNew":true,"createdOn":"2017-08-20T18:11:05.016Z","updatedOn":null,"expiresOn":null,"value":"hello world"}}
+{"/":{"isNew":true,"createdOn":"2017-08-20T18:11:05.016Z","updatedOn":null,"expiresOn":null,"value":"hello world"},"/this/is/excluded":{"isNew":false,"createdOn":null,"updatedOn":"2017-08-20T19:54:42.167Z","expiresOn":null,"value":"ciao mondo"}}

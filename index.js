@@ -35,25 +35,29 @@ module.exports = function (opts = {}) {
         ['life', 'cachedProperty', 'onReadCache']
     );
 
-    //console.log(config);
-    //console.log(incacheConfig);
-
     // Create cache object
     const cache = new InCache(incacheConfig);
 
     return async function (ctx, next) {
 
-        ctx.cache = cache;
-
         const key = ctx[defaultConfig.cachedProperty];
 
+        ctx.cache = cache;
+
         /**
-         * Set cache
+         * Adds to cache
          * @param value {any} any value to caching
          * @returns {{isNew: boolean, createdOn: (Date|null), updatedOn: (Date|null), value: *}}
          */
         ctx.cached = (value) => {
             return ctx.cache.set(key, value);
+        };
+
+        /**
+         * Removes from cache
+         */
+        ctx.uncache = () => {
+            ctx.cache.remove(key);
         };
 
         /**

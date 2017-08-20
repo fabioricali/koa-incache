@@ -17,7 +17,7 @@ npm install koa-incache --save
 
 # Example
 
-Basic usage
+#### Basic usage
 
 ```javascript
 const cache = require('koa-incache');
@@ -31,6 +31,46 @@ app.use(ctx=>{
     ctx.cached(result);
     ctx.body = result;
 });
+
+app.listen(3000);
+```
+
+#### Routing
+
+```javascript
+const fs = require('fs');
+const cache = require('koa-incache');
+const koa = require('koa');
+const Router = require('koa-router');
+const app = new koa();
+const router = new Router();
+
+app.use(cache());
+
+router.get('/this/is/cached', function (ctx, next) {
+    const content = fs.readFileSync('myFile');
+    ctx.cached(content);
+    ctx.body = content;
+});
+
+router.get('/this/is/not/cached', function (ctx, next) {
+    const content = fs.readFileSync('myFile');
+    ctx.body = content;
+});
+
+router.get('/uncache', function (ctx, next) {
+    const content = fs.readFileSync('myFile');
+    ctx.cached(content);
+    
+    if(foo)
+        ctx.uncache();
+    
+    ctx.body = content;
+});
+
+app
+    .use(router.routes())
+    .use(router.allowedMethods());
 
 app.listen(3000);
 ```
