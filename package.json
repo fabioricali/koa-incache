@@ -1,0 +1,52 @@
+{
+  "name": "koa-incache",
+  "version": "0.0.0",
+  "description": "Koa cache middleware",
+  "main": "index.js",
+  "scripts": {
+    "version:major": "npm version major",
+    "version:minor": "npm version minor",
+    "version:patch": "npm version patch",
+    "postversion": "npm publish && git push && git push --tags",
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "mocha.test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabioricali/koa-incache.git"
+  },
+  "keywords": [
+    "koa",
+    "cache",
+    "incache",
+    "in-memory",
+    "redis"
+  ],
+  "author": "Fabio Ricali <fabio@rica.li>",
+  "contributors": [
+    {
+      "name": "Davide Polano",
+      "email": "info@mdslab.org"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fabioricali/koa-incache/issues"
+  },
+  "homepage": "https://github.com/fabioricali/koa-incache#readme",
+  "devDependencies": {
+    "bejs": "^1.11.0",
+    "coveralls": "^2.13.1",
+    "istanbul": "^0.4.5",
+    "koa": "^2.3.0",
+    "koa-router": "^7.2.1",
+    "mocha": "^3.5.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "request": "^2.81.0"
+  },
+  "dependencies": {
+    "defaulty": "^1.1.0",
+    "delete-key": "^1.0.2",
+    "incache": "^3.0.1"
+  }
+}

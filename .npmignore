@@ -1,0 +1,5 @@
+.ide/
+node_modules/
+test/
+.koa-incache
+.travis.yml
