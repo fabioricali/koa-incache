@@ -10,7 +10,8 @@ Koa cache middleware
 
 ## Installation
 
-### Node.js
+Koa-incache requires **koa2** and **node v7.6.0 or higher**
+
 ```
 npm install koa-incache --save
 ```
