@@ -37,7 +37,7 @@ app.listen(3000);
 ```
 
 #### Routing
-
+The **cache is made** using `ctx.path` as key
 ```javascript
 const fs = require('fs');
 const cache = require('koa-incache');
@@ -47,7 +47,7 @@ const app = new koa();
 const router = new Router();
 
 app.use(cache({
-    life: 60 // 1 minute max age
+    maxAge: 60000 // 1 minute max age
 }));
 
 router.get('/this/is/cached', function (ctx, next) {
@@ -77,6 +77,22 @@ app
 
 app.listen(3000);
 ```
+
+#### Access to InCache instance
+From koa context it's possible get InCache by `ctx.cache`
+
+```javascript
+router.get('/my/root', function (ctx, next) {
+    ctx.cache.set('my key', 'my value');
+    //...
+});
+```
+
+## API context
+- `cached` accept an argument that is the content to be stored
+- `uncache` remove cache for context root
+
+For more info **about InCache** <a target="_blank" href="https://github.com/fabioricali/incache">click here</a>
 
 ## Changelog
 You can view the changelog <a target="_blank" href="https://github.com/fabioricali/koa-incache/blob/master/CHANGELOG.md">here</a>

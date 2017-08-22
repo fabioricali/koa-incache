@@ -4,6 +4,8 @@ const deleteKey = require('delete-key');
 
 const defaultConfig = {
     life: 0,
+    maxAge: 0,
+    expires: null,
     save: true,
     cachedProperty: 'path',
     storeName: 'koa-incache',
@@ -14,7 +16,9 @@ const defaultConfig = {
 /**
  * Cache middleware
  * @param [opts] {Object} configuration options
- * @param [opts.life=0] {number} max age. If 0 not expire
+ * @param [opts.maxAge=0] {number} max age in milliseconds. If 0 not expire
+ * @param [opts.life=0] {number} **deprecated:** max age in seconds. If 0 not expire
+ * @param [opts.expires] {Date|string} a Date for expiration. (overwrites `opts.maxAge`)
  * @param [opts.save=true] {boolean} if true saves cache in disk
  * @param [opts.cachedProperty='patch'] {string} context property to be cached
  * @param [opts.filePath=.koa-incache] {string} cache file path
@@ -25,14 +29,14 @@ module.exports = function (opts = {}) {
 
     const config = defaulty(opts, defaultConfig);
 
-    config.global = {
-        life: config.life
-    };
+    if(config.life) {
+        config.maxAge = config.life * 1000;
+    }
 
     // One configuration
     const incacheConfig = deleteKey(
         Object.assign({}, config),
-        ['life', 'cachedProperty', 'onReadCache']
+        ['life','cachedProperty', 'onReadCache']
     );
 
     // Create cache object
