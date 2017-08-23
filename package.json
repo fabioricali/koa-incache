@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "defaulty": "^1.1.0",
-    "delete-key": "^1.0.2",
+    "delete-key": "^1.0.4",
     "incache": "^4.0.2"
   }
 }

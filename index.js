@@ -29,6 +29,7 @@ module.exports = function (opts = {}) {
 
     const config = defaulty(opts, defaultConfig);
 
+    /* istanbul ignore if  */
     if(config.life) {
         config.maxAge = config.life * 1000;
     }
