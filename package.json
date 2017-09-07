@@ -47,8 +47,8 @@
     "supertest": "^3.0.0"
   },
   "dependencies": {
-    "defaulty": "^1.1.0",
-    "delete-key": "^1.0.4",
+    "defaulty": "^1.2.1",
+    "delete-key": "^1.1.0",
     "incache": "^5.2.0"
   }
 }

@@ -27,16 +27,15 @@ const defaultConfig = {
  */
 module.exports = function (opts = {}) {
 
-    const config = defaulty(opts, defaultConfig);
+    defaulty(opts, defaultConfig);
 
     /* istanbul ignore if  */
-    if(config.life) {
-        config.maxAge = config.life * 1000;
+    if(opts.life) {
+        opts.maxAge = opts.life * 1000;
     }
 
     // One configuration
-    const incacheConfig = deleteKey(
-        Object.assign({}, config),
+    const incacheConfig = deleteKey.copy(opts,
         ['life','cachedProperty', 'onReadCache']
     );
 
@@ -72,7 +71,7 @@ module.exports = function (opts = {}) {
         const cached = ctx.cache.get(key);
 
         if (typeof cached !== 'undefined') {
-            config.onReadCache.call(this, key, cached);
+            opts.onReadCache.call(this, key, cached);
             return ctx.body = cached;
         }
 
