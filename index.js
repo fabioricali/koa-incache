@@ -71,7 +71,7 @@ module.exports = function (opts = {}) {
          */
         const cached = ctx.cache.get(key);
 
-        if (cached !== null) {
+        if (typeof cached !== 'undefined') {
             config.onReadCache.call(this, key, cached);
             return ctx.body = cached;
         }
