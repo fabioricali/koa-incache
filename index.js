@@ -7,7 +7,7 @@ const defaultConfig = {
     maxAge: 0,
     expires: null,
     save: true,
-    cachedProperty: 'path',
+    cachedProperty: 'originalUrl',
     storeName: 'koa-incache',
     filePath: '.koa-incache',
     onReadCache: ()=>{}

@@ -37,7 +37,7 @@ app.listen(3000);
 ```
 
 #### Routing
-The **cache is made** using `ctx.path` as key
+The **cache is made** using `ctx.originalUrl` as key
 ```javascript
 const fs = require('fs');
 const cache = require('koa-incache');
