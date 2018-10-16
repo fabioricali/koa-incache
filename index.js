@@ -1,4 +1,4 @@
-const InCache = require('incache');
+const InCache = require('./override/incache');
 const defaulty = require('defaulty');
 const deleteKey = require('delete-key');
 

@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.3.2] - 2018-10-16
+- Fixed the global maxAge param was not considered
+
 ## [0.3.1] - 2018-10-15
 - Changed key for caching from `path` to `originalUrl`
 
