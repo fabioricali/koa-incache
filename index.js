@@ -22,7 +22,7 @@ const defaultConfig = {
  * @param [opts.expires] {Date|string} a Date for expiration. (overwrites `opts.maxAge`)
  * @param [opts.save=true] {boolean} if true saves cache in disk
  * @param [opts.debug=false] {boolean} if true show console log
- * @param [opts.cachedProperty='patch'] {string} context property to be cached
+ * @param [opts.cachedProperty='originalUrl'] {string} context property to be cached
  * @param [opts.filePath=.koa-incache] {string} cache file path
  * @param [opts.onReadCache] {Function} function called when a key is read from cache
  * @returns {Function}
@@ -58,6 +58,8 @@ module.exports = function (opts = {}) {
 
     return async function (ctx, next) {
 
+        console.log('re')
+
         const key = ctx[defaultConfig.cachedProperty];
 
         ctx.cache = cache;
@@ -70,9 +72,12 @@ module.exports = function (opts = {}) {
         };
 
         ctx.errorWaitCache = (e) => {
+            console.log('sono dentro error wait cache', key)
             waitCacheKey[key].forEach(item => {
+                console.log('reject');
                 item.reject(e);
             });
+            delete waitCacheKey[key];
         };
 
         /**
@@ -127,7 +132,7 @@ module.exports = function (opts = {}) {
             return dispatch(ctx, key, cached);
         }
 
-        return next();
+        await next();
     }
 
 };
