@@ -1,6 +1,6 @@
 {
   "name": "koa-incache",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Koa cache middleware",
   "main": "index.js",
   "scripts": {
