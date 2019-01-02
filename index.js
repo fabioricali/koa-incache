@@ -51,10 +51,11 @@ module.exports = function (opts = {}) {
         /**
          * Adds to cache
          * @param value {any} any value to caching
+         * @param [opts] {object} InCache options
          * @returns {{isNew: boolean, createdOn: (Date|null), updatedOn: (Date|null), value: *}}
          */
-        ctx.cached = (value) => {
-            return ctx.cache.set(key, value);
+        ctx.cached = (value, opts) => {
+            return ctx.cache.set(key, value, opts);
         };
 
         /**
