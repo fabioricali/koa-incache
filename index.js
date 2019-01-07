@@ -72,7 +72,7 @@ module.exports = function (opts = {}) {
         const cached = ctx.cache.get(key);
 
         if (typeof cached !== 'undefined') {
-            opts.onReadCache.call(this, key, cached);
+            opts.onReadCache.call(ctx, key, cached);
             return ctx.body = cached;
         }
 
